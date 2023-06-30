@@ -11,10 +11,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    ## ${{secrets.HASHKEY}}
+    ## ${{github.event.head_commit.message}}
+    ## ${{github.event.comment.message}}
     ## Last Commnit Message Check
     if: ${{ contains(github.event.head_commit.message, 'RUN') }}
     steps:
     - uses: actions/checkout@v3
     - name: Send Trigger 
       run: |
-        curl -X GET http://hjshunas.duckdns.org:38989/ping/${{secrets.HASHKEY}}/${{github.event.head_commit.message}}/${{github.event.comment.message}}
+        curl -X GET http://hjshunas.duckdns.org:38989/ping
