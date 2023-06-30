@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    ## Last Commnit Message Check
     if: ${{ contains(github.event.head_commit.message, '[RUN]') }}
     steps:
     - uses: actions/checkout@v3
